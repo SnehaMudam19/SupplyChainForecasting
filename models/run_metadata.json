@@ -1,0 +1,82 @@
+{
+  "data_shape": [
+    7869549,
+    27
+  ],
+  "date_range": [
+    "2023-06-05 00:00:00",
+    "2025-07-13 00:00:00"
+  ],
+  "train_test_cutoff": "2025-02-10T00:00:00.000000",
+  "lstm_train_end": "2025-02-09 00:00:00",
+  "lstm_test_start": "2025-02-10 00:00:00",
+  "lstm_window": 15,
+  "lgb_features": [
+    "city_id",
+    "store_id",
+    "product_id",
+    "activity_flag",
+    "discount",
+    "holiday_flag",
+    "precpt",
+    "avg_temperature",
+    "avg_humidity",
+    "avg_wind_level",
+    "year",
+    "month",
+    "day_of_month",
+    "day_of_week",
+    "week_of_year",
+    "quarter",
+    "is_weekend",
+    "lag_1",
+    "lag_7",
+    "lag_14",
+    "lag_28",
+    "rolling_mean_7",
+    "rolling_mean_14",
+    "rolling_mean_28"
+  ],
+  "lstm_continuous_features": [
+    "activity_flag",
+    "discount",
+    "holiday_flag",
+    "precpt",
+    "avg_temperature",
+    "avg_humidity",
+    "avg_wind_level",
+    "year",
+    "month",
+    "day_of_month",
+    "day_of_week",
+    "week_of_year",
+    "quarter",
+    "is_weekend"
+  ],
+  "lstm_categorical_features": [
+    "city_id",
+    "store_id",
+    "product_id"
+  ],
+  "lgbm_best_params": {
+    "num_leaves": 127,
+    "learning_rate": 0.02,
+    "n_estimators": 1000,
+    "max_depth": -1
+  },
+  "lstm_embedding_sizes": {
+    "city": 18,
+    "store": 1057,
+    "product": 576
+  },
+  "lstm_hidden_dim": 64,
+  "lstm_epochs_run": 3,
+  "artifacts": {
+    "lightgbm_model": "best_lightgbm.pkl",
+    "lightgbm_features": "lgbm_features.pkl",
+    "lstm_weights": "best_lstm.pth",
+    "lstm_scaler": "lstm_scaler.pkl",
+    "feature_importance": "lightgbm_feature_importance.csv",
+    "final_comparison": "final_model_comparison.csv"
+  }
+}
