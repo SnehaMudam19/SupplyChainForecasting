@@ -132,16 +132,11 @@ def store_product_performance(
     grouped = grouped[grouped["avg_sales"] > 0]
     grouped["normalized_error"] = grouped["mean_abs_error"] / grouped["avg_sales"]
 
-    if normalized_error is not None and not grouped.empty:
-        percentile = float((grouped["normalized_error"] < normalized_error).mean())
-    else:
-        percentile = None
-
-    if percentile is None:
+    if normalized_error is None:
         reliability = "Unknown"
-    elif percentile <= 0.33:
+    elif normalized_error <= 0.30:
         reliability = "Good"
-    elif percentile <= 0.66:
+    elif normalized_error <= 0.50:
         reliability = "Moderate"
     else:
         reliability = "Poor"
@@ -152,7 +147,7 @@ def store_product_performance(
         "r2": float(r2) if r2 is not None else None,
         "avg_sales": avg_sales,
         "normalized_error": float(normalized_error) if normalized_error is not None else None,
-        "percentile_rank": percentile,
+        "percentile_rank": None,
         "reliability": reliability,
         "n_obs": int(len(pair)),
     }
